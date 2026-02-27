@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
+import WindGL 1.0
 
 Rectangle {
     id: root
@@ -7,25 +8,47 @@ Rectangle {
     clip: true
     color: "#000"
 
-    RowLayout {
+    ColumnLayout {
         anchors {
             fill: parent
-            margins: 8
+            margins: 9
+            bottomMargin: 5
         }
         spacing: 8
 
-        ControlPanel {
-            id: controlPanel
+        RowLayout {
+            Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.preferredWidth: 235
+            spacing: 8
+
+            ControlPanel {
+                id: controlPanel
+                Layout.fillHeight: true
+                Layout.preferredWidth: 235
+            }
+
+            MainPanel {
+                id: mainPanel
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                particleParams: controlPanel.parameters
+                contentItem: WindGLFbo {
+                    id: windGLFbo
+                    anchors.fill: parent
+
+                    particlesParams: controlPanel.parameters
+                }
+            }
         }
 
-        MainPanel {
-            id: mainPanel
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+        Footer {
+            id: footer
 
-            particleParams: controlPanel.parameters
+            Layout.fillWidth: true
+            Layout.preferredHeight: paintedHeight
+
+            text: qsTr(" Developed by wearily on February, 27, 2026 ")
         }
     }
 }

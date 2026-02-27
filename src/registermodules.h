@@ -4,6 +4,7 @@
 #include <QtQml/qqml.h>
 
 #include "particlesparams.h"
+#include "windglfbo.h"
 
 #define TO_STR(x) #x
 
@@ -11,6 +12,7 @@
 inline static void registerModules()
 {
     qmlRegisterType<ParticlesParams>(TO_STR(WindGL), 1, 0, TO_STR(ParticlesParams));
+    qmlRegisterType<WindGLFbo>(TO_STR(WindGL), 1, 0, TO_STR(WindGLFbo));
 }
 
 #endif // REGISTERMODULES_H
