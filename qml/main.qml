@@ -6,4 +6,28 @@ Window {
     height: 480
     visible: true
     title: qsTr("Hello Windy")
+
+    property string mainWindowPath: "MainWindow.qml"
+
+    Component {
+        id: mainWindowComp
+        MainWindow {}
+    }
+
+    Loader {
+        id: appLoader
+        anchors.fill: parent
+        sourceComponent: mainWindowComp
+    }
+
+    Shortcut {
+        sequence: '`'
+        onActivated: appReload()
+    }
+
+    function appReload() {
+        appLoader.sourceComponent = undefined
+        _qmlEngine.clearCache()
+        appLoader.sourceComponent = Qt.createComponent(mainWindowPath)
+    }
 }
