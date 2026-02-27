@@ -28,6 +28,8 @@ set(PROJECT_SOURCES
     src/qmlengine.h
     src/particlesparams.h
     src/registermodules.h
+    src/windglfbo.h src/windglfbo.cpp
+    src/windglrenderer.h src/windglrenderer.cpp
     main.cpp
 )
 
