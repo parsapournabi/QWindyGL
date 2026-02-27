@@ -17,13 +17,15 @@ Rectangle {
         ControlPanel {
             id: controlPanel
             Layout.fillHeight: true
-            Layout.preferredWidth: 225
+            Layout.preferredWidth: 235
         }
 
         MainPanel {
             id: mainPanel
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            particleParams: controlPanel.parameters
         }
     }
 }

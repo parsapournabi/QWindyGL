@@ -2,8 +2,10 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 
 Window {
-    width: 640
-    height: 480
+    x: 0
+    y: 0
+    width: 1000
+    height: 635
     visible: true
     title: qsTr("Hello Windy")
 
