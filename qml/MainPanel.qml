@@ -6,6 +6,7 @@ Rectangle {
     property ParticlesParams particleParams
 
     property alias title: title
+    default property alias contentItem: contentItem.data
 
     clip: true
     color: "#333"
@@ -14,9 +15,12 @@ Rectangle {
     CusLabel {
         id: title
         anchors {
-            fill: parent
+            top: parent.top
+            left: parent.left
+            right: parent.right
             margins: 15
         }
+        height: paintedHeight
 
         font.pixelSize: 16
 
@@ -24,5 +28,21 @@ Rectangle {
                   particleParams.fadeOpacity).arg(
                   particleParams.speedFactor).arg(particleParams.dropRate).arg(
                   particleParams.dropRateBump)
+    }
+
+    Item {
+        id: parentContentItem
+        anchors {
+            top: title.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            margins: 15
+        }
+
+        Item {
+            id: contentItem
+            anchors.fill: parent
+        }
     }
 }
