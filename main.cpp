@@ -1,7 +1,9 @@
 #include <QGuiApplication>
+#include <QQuickStyle>
 
 #include "qmlengine.h"
 
+// Enable hot-reload or not (hot-reload only works without qrc:)
 #define DEVELOPMENT
 
 int main(int argc, char* argv[])
@@ -11,8 +13,10 @@ int main(int argc, char* argv[])
 #endif
     QGuiApplication app(argc, argv);
 
+    QQuickStyle::setStyle("Material");
+
     auto curDir = QString(PROJECT_SOURCE_DIR);
-    auto mainQml = curDir + "/main.qml";
+    auto mainQml = curDir + "/qml/main.qml";
     QmlEngine engine;
 #ifdef DEVELOPMENT
     const QUrl url(QUrl::fromLocalFile(mainQml));

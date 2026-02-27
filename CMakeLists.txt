@@ -9,8 +9,17 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
+find_package(OpenGL REQUIRED)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick QuickControls2 OpenGL)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick QuickControls2 OpenGL)
+
+if (OPENGL_FOUND)
+    message("opengl found")
+    message("include dir: ${OPENGL_INCLUDE_DIR}")
+    message("link libraries: ${OPENGL_gl_LIBRARY}")
+else (OPENGL_FOUND)
+    message("opengl not found")
+endif()
 
 set(PROJECT_SOURCES
         qml/qml.qrc
@@ -46,7 +55,13 @@ endif()
 target_include_directories(QWindyGL PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 target_link_libraries(QWindyGL
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE
+  Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::Quick
+  Qt${QT_VERSION_MAJOR}::QuickControls2
+  Qt${QT_VERSION_MAJOR}::OpenGL
+  ${OPENGL_gl_LIBRARY}
+)
 
 target_compile_definitions(QWindyGL PRIVATE PROJECT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
