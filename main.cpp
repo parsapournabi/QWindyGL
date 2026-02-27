@@ -2,6 +2,7 @@
 #include <QQuickStyle>
 
 #include "qmlengine.h"
+#include "registermodules.h"
 
 // Enable hot-reload or not (hot-reload only works without qrc:)
 #define DEVELOPMENT
@@ -35,6 +36,9 @@ int main(int argc, char* argv[])
         }
     },
     Qt::QueuedConnection);
+
+    // Registering MetaTypes
+    registerModules();
 
     // Adding qmlEngine for application hot-reload
     engine.rootContext()->setContextProperty("_qmlEngine", &engine);

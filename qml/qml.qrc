@@ -6,6 +6,5 @@
         <file>MainPanel.qml</file>
         <file>CusLabel.qml</file>
         <file>SliderControl.qml</file>
-        <file>ParticlesParams.qml</file>
     </qresource>
 </RCC>

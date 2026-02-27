@@ -22,11 +22,13 @@ else (OPENGL_FOUND)
 endif()
 
 set(PROJECT_SOURCES
-        qml/qml.qrc
-        shaders/shaders.qrc
+    qml/qml.qrc
+    shaders/shaders.qrc
 
-        src/qmlengine.h
-        main.cpp
+    src/qmlengine.h
+    src/particlesparams.h
+    src/registermodules.h
+    main.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -43,24 +45,24 @@ else()
         add_library(QWindyGL SHARED
             ${PROJECT_SOURCES}
         )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(QWindyGL
-          ${PROJECT_SOURCES}
-        )
-    endif()
+    # Define properties for Android with Qt 5 after find_package() calls as:
+    #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
+else()
+    add_executable(QWindyGL
+        ${PROJECT_SOURCES}
+    )
+endif()
 endif()
 
 target_include_directories(QWindyGL PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 target_link_libraries(QWindyGL
-  PRIVATE
-  Qt${QT_VERSION_MAJOR}::Core
-  Qt${QT_VERSION_MAJOR}::Quick
-  Qt${QT_VERSION_MAJOR}::QuickControls2
-  Qt${QT_VERSION_MAJOR}::OpenGL
-  ${OPENGL_gl_LIBRARY}
+    PRIVATE
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Quick
+    Qt${QT_VERSION_MAJOR}::QuickControls2
+    Qt${QT_VERSION_MAJOR}::OpenGL
+    ${OPENGL_gl_LIBRARY}
 )
 
 target_compile_definitions(QWindyGL PRIVATE PROJECT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
@@ -69,7 +71,7 @@ target_compile_definitions(QWindyGL PRIVATE PROJECT_SOURCE_DIR="${CMAKE_CURRENT_
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.QWindyGL)
+    set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.QWindyGL)
 endif()
 set_target_properties(QWindyGL PROPERTIES
     ${BUNDLE_ID_OPTION}

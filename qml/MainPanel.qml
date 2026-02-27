@@ -1,4 +1,5 @@
 import QtQuick 2.12
+import WindGL 1.0
 
 Rectangle {
     id: root
