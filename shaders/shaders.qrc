@@ -1,3 +1,9 @@
 <RCC>
-    <qresource prefix="/"/>
+    <qresource prefix="/">
+        <file>draw.vert</file>
+        <file>draw.frag</file>
+        <file>quad.vert</file>
+        <file>screen.frag</file>
+        <file>update.frag</file>
+    </qresource>
 </RCC>
