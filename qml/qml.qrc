@@ -6,5 +6,6 @@
         <file>MainPanel.qml</file>
         <file>CusLabel.qml</file>
         <file>SliderControl.qml</file>
+        <file>Footer.qml</file>
     </qresource>
 </RCC>
