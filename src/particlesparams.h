@@ -13,11 +13,13 @@
             if (v == m_##name) \
                 return; \
             m_##name = v; \
+            m_##name##HasChanged = true; \
             emit name##Changed(); \
         } \
         Q_SIGNAL void name##Changed(); \
     private: \
-        type m_##name = value;
+        type m_##name = value; \
+        bool m_##name##HasChanged = false; // non-QObject classes Will recognize changes by this variable
 
 
 class ParticlesParams : public QObject
