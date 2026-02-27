@@ -1,5 +1,8 @@
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
+
+#include "qmlengine.h"
+
+#define DEVELOPMENT
 
 int main(int argc, char* argv[])
 {
@@ -8,8 +11,14 @@ int main(int argc, char* argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
+    auto curDir = QString(PROJECT_SOURCE_DIR);
+    auto mainQml = curDir + "/main.qml";
+    QmlEngine engine;
+#ifdef DEVELOPMENT
+    const QUrl url(QUrl::fromLocalFile(mainQml));
+#else
     const QUrl url(QStringLiteral("qrc:/main.qml"));
+#endif
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,
@@ -22,6 +31,10 @@ int main(int argc, char* argv[])
         }
     },
     Qt::QueuedConnection);
+
+    // Adding qmlEngine for application hot-reload
+    engine.rootContext()->setContextProperty("_qmlEngine", &engine);
+
     engine.load(url);
 
     return app.exec();
