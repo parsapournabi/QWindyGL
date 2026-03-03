@@ -51,4 +51,9 @@ Rectangle {
             text: qsTr(" Developed by wearily on February, 27, 2026 ")
         }
     }
+
+    FontLoader {
+        id: fontFiraCodeReg
+        source: "qrc:/share/fonts/FiraCode-Regular.ttf"
+    }
 }

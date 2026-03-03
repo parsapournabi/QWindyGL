@@ -4,7 +4,7 @@ Text {
     id: root
 
     font {
-        family: "Fira Code"
+        family: fontFiraCodeReg.name
         bold: true
         pixelSize: 11
     }
