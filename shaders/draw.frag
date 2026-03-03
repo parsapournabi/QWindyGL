@@ -1,7 +1,26 @@
-uniform sampler2D qt_Texture0;
-varying vec4 qt_TexCoord0;
+#version 130
 
-void main(void)
-{
-    gl_FragColor = texture2D(qt_Texture0, qt_TexCoord0.st);
+#define COLOR_RAMP
+
+uniform sampler2D u_wind;
+uniform vec2 u_wind_min;
+uniform vec2 u_wind_max;
+uniform sampler2D u_color_ramp;
+
+varying vec2 v_particle_pos;
+
+void main() {
+    vec2 velocity = mix(u_wind_min, u_wind_max, texture2D(u_wind, v_particle_pos).rg);
+    float speed_t = length(velocity) / length(u_wind_max);
+
+    // color ramp is encoded in a 16x16 texture
+    vec2 ramp_pos = vec2(
+        fract(16.0 * speed_t),
+        floor(16.0 * speed_t) / 16.0);
+
+#ifdef COLOR_RAMP
+    gl_FragColor = texture2D(u_color_ramp, ramp_pos);
+#else
+    gl_FragColor = vec4(0.7, .7, .7, 1.);
+#endif
 }
