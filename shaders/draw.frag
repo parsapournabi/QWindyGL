@@ -1,10 +1,9 @@
 #version 130
 
-#define COLOR_RAMP
-
 uniform sampler2D u_wind;
 uniform vec2 u_wind_min;
 uniform vec2 u_wind_max;
+uniform float u_color_ramp_active;
 uniform sampler2D u_color_ramp;
 
 varying vec2 v_particle_pos;
@@ -18,9 +17,8 @@ void main() {
         fract(16.0 * speed_t),
         floor(16.0 * speed_t) / 16.0);
 
-#ifdef COLOR_RAMP
-    gl_FragColor = texture2D(u_color_ramp, ramp_pos);
-#else
-    gl_FragColor = vec4(0.7, .7, .7, 1.);
-#endif
+    vec4 color = vec4(0.7, .7, .7, 1.);
+    vec4 colorRamp = texture2D(u_color_ramp, ramp_pos);
+
+    gl_FragColor = mix(color, colorRamp, u_color_ramp_active);
 }

@@ -33,6 +33,7 @@ class ParticlesParams : public QObject
         PARTICLE_PROP(QVector2D, windMin, WindMin, QVector2D(-10.0, -10.0)) // UMin, VMin
         PARTICLE_PROP(QVector2D, windMax, WindMax, QVector2D(10.0, 10.0)) // UMax, VMax
         PARTICLE_PROP(int, windDataIndex, WindDataIndex, -1)
+        PARTICLE_PROP(bool, colorRampActive, ColorRampActive, true)
     public:
         explicit ParticlesParams(QObject* parent = nullptr)
             : QObject{parent}
