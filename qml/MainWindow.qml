@@ -24,7 +24,7 @@ Rectangle {
             ControlPanel {
                 id: controlPanel
                 Layout.fillHeight: true
-                Layout.preferredWidth: 235
+                Layout.preferredWidth: 265
             }
 
             MainPanel {
