@@ -28,6 +28,7 @@ set(PROJECT_SOURCES
     src/qmlengine.h
     src/particlesparams.h
     src/registermodules.h
+    src/utils.h
     src/windglfbo.h src/windglfbo.cpp
     src/windglrenderer.h src/windglrenderer.cpp
     main.cpp
@@ -68,6 +69,7 @@ target_link_libraries(QWindyGL
 )
 
 target_compile_definitions(QWindyGL PRIVATE PROJECT_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+target_compile_definitions(QWindyGL PRIVATE IMAGES_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/share/images/")
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
