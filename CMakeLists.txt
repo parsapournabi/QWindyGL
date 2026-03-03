@@ -24,6 +24,7 @@ endif()
 set(PROJECT_SOURCES
     qml/qml.qrc
     shaders/shaders.qrc
+    resources.qrc
 
     src/qmlengine.h
     src/particlesparams.h

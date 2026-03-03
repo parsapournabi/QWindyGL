@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>share/fonts/FiraCode-Bold.ttf</file>
+        <file>share/fonts/FiraCode-Light.ttf</file>
+        <file>share/fonts/FiraCode-Medium.ttf</file>
+        <file>share/fonts/FiraCode-Regular.ttf</file>
+        <file>share/fonts/FiraCode-Retina.ttf</file>
+        <file>share/fonts/FiraCode-SemiBold.ttf</file>
+        <file>share/images/2016112000.png</file>
+        <file>share/images/2016112006.png</file>
+        <file>share/images/2016112012.png</file>
+        <file>share/images/2016112018.png</file>
+        <file>share/images/2016112100.png</file>
+        <file>share/images/2016112106.png</file>
+        <file>share/images/2016112112.png</file>
+        <file>share/images/2016112118.png</file>
+        <file>share/images/2016112200.png</file>
+    </qresource>
+</RCC>
