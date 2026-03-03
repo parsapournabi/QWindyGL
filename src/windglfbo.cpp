@@ -3,10 +3,22 @@
 #include "windglrenderer.h"
 #include "particlesparams.h"
 
+#include <QTimer>
+
 WindGLFbo::WindGLFbo(QQuickItem* parent)
     : QQuickFramebufferObject(parent)
 {
     setMirrorVertically(true);
+
+    QTimer* tmr = new QTimer(this);
+
+    tmr->setInterval(5);
+    connect(tmr, &QTimer::timeout, this, [ = ]()
+    {
+        update();
+    });
+
+    tmr->start();
 }
 
 WindGLFbo::~WindGLFbo()
