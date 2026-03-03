@@ -2,6 +2,7 @@
 #include <QQuickStyle>
 
 #include "qmlengine.h"
+#include "utils.h"
 #include "registermodules.h"
 
 // Enable hot-reload or not (hot-reload only works without qrc:)
@@ -42,6 +43,7 @@ int main(int argc, char* argv[])
 
     // Adding qmlEngine for application hot-reload
     engine.rootContext()->setContextProperty("_qmlEngine", &engine);
+    engine.rootContext()->setContextProperty("_datasetNames", Utils::getWindDataNames());
 
     engine.load(url);
 
