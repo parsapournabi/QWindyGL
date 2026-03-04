@@ -10,5 +10,6 @@
         <file>ComboBoxControl.qml</file>
         <file>RangeSliderControl.qml</file>
         <file>SwitchControl.qml</file>
+        <file>MapView.qml</file>
     </qresource>
 </RCC>
