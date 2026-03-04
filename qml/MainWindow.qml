@@ -27,16 +27,16 @@ Rectangle {
                 Layout.preferredWidth: 265
             }
 
-            MainPanel {
-                id: mainPanel
+            MapView {
+                id: mapview
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                particleParams: controlPanel.parameters
                 contentItem: WindGLFbo {
                     id: windGLFbo
                     anchors.fill: parent
 
+                    projection: mapview.projection.georect
                     particlesParams: controlPanel.parameters
                 }
             }
