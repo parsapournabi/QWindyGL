@@ -1,7 +1,6 @@
 #include "windglfbo.h"
 
 #include "windglrenderer.h"
-#include "particlesparams.h"
 
 #include <QTimer>
 
@@ -29,20 +28,4 @@ WindGLFbo::~WindGLFbo()
 QQuickFramebufferObject::Renderer* WindGLFbo::createRenderer() const
 {
     return new WindGLRenderer();
-}
-
-ParticlesParams* WindGLFbo::particlesParams() const
-{
-    return m_particlesParams;
-}
-
-void WindGLFbo::setParticlesParams(ParticlesParams* particlesParams)
-{
-    if (particlesParams == m_particlesParams)
-    {
-        return;
-    }
-
-    m_particlesParams = particlesParams;
-    emit particlesParamsChanged();
 }
