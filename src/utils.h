@@ -7,10 +7,22 @@
 #include <QPainter>
 #include <QColor>
 #include <QLinearGradient>
+#include <QtMath>
 #include <QDir>
 
 namespace Utils
 {
+
+    /**
+     *  Coordinates Minimum & Maximum Values
+     *  These should be use at vertices converting process
+    **/
+    constexpr float LimitLeft = -M_PI; // -180.0 deg
+    constexpr float LimitRight = M_PI; // 180.0 deg
+    constexpr float LimitBottom = -M_PI_2; // -90.0 deg
+    constexpr float LimitTop = M_PI_2; // 90.0 deg
+
+
     inline QMap<float, QColor> defaultRampColors =
     {
         {0.0, "#3288bd"},
