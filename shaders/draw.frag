@@ -17,7 +17,7 @@ void main() {
         fract(16.0 * speed_t),
         floor(16.0 * speed_t) / 16.0);
 
-    vec4 color = vec4(0.7, .7, .7, 1.);
+    vec4 color = vec4(0.3, .3, .3, 1.);
     vec4 colorRamp = texture2D(u_color_ramp, ramp_pos);
 
     gl_FragColor = mix(color, colorRamp, u_color_ramp_active);
