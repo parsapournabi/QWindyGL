@@ -46,7 +46,6 @@ Rectangle {
             Layout.preferredHeight: 15
 
             text: "colorRamp:"
-            checked: true
         }
 
         SliderControl {
@@ -57,8 +56,8 @@ Rectangle {
             slider.live: false
 
             text: "numParticles:"
-            to: 589824
-            value: 64 * 64
+            to: 1024 * 2048
+            value: 256 * 256
             stepSize: 1
         }
 
@@ -68,7 +67,7 @@ Rectangle {
             Layout.preferredHeight: 15
 
             text: "fadeOpacity:"
-            value: 0.996
+            value: 0.8
         }
 
         SliderControl {
