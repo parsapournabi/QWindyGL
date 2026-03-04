@@ -15,6 +15,7 @@
 
 struct WindGLRendererParams
 {
+    QGeoRectangle projection;
     ParticlesParams* particlesParams = nullptr;
     QSize windDataRes{0, 0};
     QSize windowSize{0, 0};
@@ -109,6 +110,14 @@ void WindGLRenderer::synchronize(QQuickFramebufferObject* fbo)
 
             applyParticleStateTextures(m_params->particlesParams->numParticles());
         }
+    }
+
+    // Applying Projection
+    if (windGLFbo->m_projectionHasChanged)
+    {
+        windGLFbo->m_projectionHasChanged = false;
+
+        m_params->projection = windGLFbo->m_projection;
     }
 }
 
@@ -254,6 +263,21 @@ void WindGLRenderer::drawParticles()
     program->setUniformValue("u_color_ramp_active", (float) particlesParams->colorRampActive());
     program->setUniformValue("u_wind_min", particlesParams->windMin());
     program->setUniformValue("u_wind_max", particlesParams->windMax());
+
+    /** Projection Uniforms **/
+    auto left = qDegreesToRadians(params->projection.topLeft().longitude());
+    auto right = qDegreesToRadians(params->projection.bottomRight().longitude());
+    auto bottom = Utils::mercatorToY(params->projection.bottomRight().latitude());
+    auto top = Utils::mercatorToY(params->projection.topLeft().latitude());
+
+    QMatrix4x4 projection;
+    projection.setToIdentity();
+    projection.ortho(left, right, bottom, top, -1., 1.);
+
+    program->setUniformValue("u_proj", projection);
+    program->setUniformValue("u_proj_scale", // NOTE: These values must be convert to mercatorY formula in shaders
+                             QVector4D(Utils::LimitLeft, Utils::LimitRight,
+                                       Utils::LimitBottom, Utils::LimitTop));
 
     glDrawArrays(GL_POINTS, 0, params->particleStateResolution * params->particleStateResolution);
 
