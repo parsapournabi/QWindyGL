@@ -22,6 +22,17 @@ namespace Utils
     constexpr float LimitBottom = -M_PI_2; // -90.0 deg
     constexpr float LimitTop = M_PI_2; // 90.0 deg
 
+    /*!
+     * \brief mercatorToY : converts latitude into the Y.
+     * \param lat
+     * \return float : -PI <= result <= PI
+     */
+    inline float mercatorToY(float lat)
+    {
+        lat = qBound(-85.05112878f, lat, 85.05112878f);
+        float rad = qDegreesToRadians(lat);
+        return qLn(qTan(M_PI / 4 + rad / 2.0));
+    }
 
     inline QMap<float, QColor> defaultRampColors =
     {
