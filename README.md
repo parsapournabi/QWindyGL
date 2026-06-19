@@ -49,7 +49,11 @@ A pure OpenGL canvas rendering wind data in a normalized coordinate system.
 * Direct control over simulation space
 
 
-![](docs/videos/no-projection.mp4)
+
+
+https://github.com/user-attachments/assets/56e23552-e67b-4b7f-8da8-c9adcf13ed59
+
+
 
 ---
 
@@ -66,7 +70,11 @@ Integrates wind rendering with **QtLocation Map (WebMercator projection)**.
 * Suitable for GIS-style applications
 
 
-![](docs/videos/mapview-projection.mp4)
+
+
+https://github.com/user-attachments/assets/a06f3dc1-2b9b-418a-ab08-0ec753bb5c3d
+
+
 
 ---
 
