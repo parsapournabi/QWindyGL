@@ -7,19 +7,28 @@ Window {
     width: 1000
     height: 635
     visible: true
+    visibility: Window.FullScreen
     title: qsTr("Hello Windy")
+    color: "black"
 
     property string mainWindowPath: "MainWindow.qml"
+    property string splashSource: "SplashScreen.qml"
 
     Component {
-        id: mainWindowComp
-        MainWindow {}
+        id: compSplashScreen
+
+        SplashScreen {
+            mainFormSource: mainWindowPath
+        }
     }
 
     Loader {
         id: appLoader
         anchors.fill: parent
-        sourceComponent: mainWindowComp
+        sourceComponent: compSplashScreen
+        onLoaded: {
+            item.start();
+        }
     }
 
     Shortcut {
@@ -28,8 +37,12 @@ Window {
     }
 
     function appReload() {
-        appLoader.sourceComponent = undefined
-        _qmlEngine.clearCache()
-        appLoader.sourceComponent = Qt.createComponent(mainWindowPath)
+        appLoader.sourceComponent = undefined;
+        appLoader.source = "";
+        _qmlEngine.clearCache();
+        appLoader.setSource(splashSource, {
+                                mainFormSource: mainWindowPath,
+                                noSplashAnimation: false
+                            });
     }
 }
