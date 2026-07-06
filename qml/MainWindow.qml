@@ -54,6 +54,6 @@ Rectangle {
 
     FontLoader {
         id: fontFiraCodeReg
-        source: "qrc:/share/fonts/FiraCode-Regular.ttf"
+        source: "qrc:/share/fonts/FiraCode/FiraCode-Regular.ttf"
     }
 }
