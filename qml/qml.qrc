@@ -11,5 +11,7 @@
         <file>RangeSliderControl.qml</file>
         <file>SwitchControl.qml</file>
         <file>MapView.qml</file>
+        <file>ShineLine.qml</file>
+        <file>SplashScreen.qml</file>
     </qresource>
 </RCC>
