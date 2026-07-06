@@ -18,5 +18,6 @@
         <file>share/fonts/FiraCode/FiraCode-Regular.ttf</file>
         <file>share/fonts/FiraCode/FiraCode-Retina.ttf</file>
         <file>share/fonts/FiraCode/FiraCode-SemiBold.ttf</file>
+        <file>share/images/Wearily-Logo-Steel.png</file>
     </qresource>
 </RCC>
