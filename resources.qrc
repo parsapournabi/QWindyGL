@@ -1,11 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>share/fonts/FiraCode-Bold.ttf</file>
-        <file>share/fonts/FiraCode-Light.ttf</file>
-        <file>share/fonts/FiraCode-Medium.ttf</file>
-        <file>share/fonts/FiraCode-Regular.ttf</file>
-        <file>share/fonts/FiraCode-Retina.ttf</file>
-        <file>share/fonts/FiraCode-SemiBold.ttf</file>
         <file>share/images/2016112000.png</file>
         <file>share/images/2016112006.png</file>
         <file>share/images/2016112012.png</file>
@@ -15,5 +9,14 @@
         <file>share/images/2016112112.png</file>
         <file>share/images/2016112118.png</file>
         <file>share/images/2016112200.png</file>
+        <file>share/fonts/Rajdhani/Rajdhani-Bold.ttf</file>
+        <file>share/fonts/Orbitron/orbitron-bold.otf</file>
+        <file>share/fonts/Orbitron/orbitron-medium.otf</file>
+        <file>share/fonts/FiraCode/FiraCode-Bold.ttf</file>
+        <file>share/fonts/FiraCode/FiraCode-Light.ttf</file>
+        <file>share/fonts/FiraCode/FiraCode-Medium.ttf</file>
+        <file>share/fonts/FiraCode/FiraCode-Regular.ttf</file>
+        <file>share/fonts/FiraCode/FiraCode-Retina.ttf</file>
+        <file>share/fonts/FiraCode/FiraCode-SemiBold.ttf</file>
     </qresource>
 </RCC>
